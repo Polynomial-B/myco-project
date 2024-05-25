@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="main">
+    <%- include('../partials/nav') %>
+
+      <h1>
+        <%= foundMushroom.commonName %></a>
+      </h1>
+      <p>
+        (<%= foundMushroom.scientificName %>)
+      </p>
+      <div class="img-div">
+        <% if ( foundMushroom.image !=="" ) { %>
+          <img src="<%=foundMushroom.image %>" alt="<%= foundMushroom.commonName%> close-up">
+          <% } else { %>
+            <em style="color: rgb(34, 98, 59)">No image currently available.</em>
+            <br>
+            <br>
+            <br>
+            <% } %>
+      </div>
+
+
+      
+      <% if (user) { %>
+        <a href="/mushrooms/<%=foundMushroom.commonName%>/edit">Edit</a>
+        <a href="/mushrooms/<%=foundMushroom.commonName%>/reviews">Reviews</a>
+      <form id="delete" action="/mushrooms/<%=foundMushroom.commonName%>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%=foundMushroom.commonName%></button></form>
+      <% } %>
+
+  </div>
+</body>
+
+</html>

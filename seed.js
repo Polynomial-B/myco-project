@@ -1,28 +1,26 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-require('dotenv').config()
+require("dotenv").config();
 
-const Mushroom = require('.models/mushroom.js')
+const Mushroom = require("./models/mushroom.js");
 
-const mushroomData = require('/seedData.js')
+const mushroomData = require("./seedData.js");
 
 async function seed() {
+  console.log("Seeding start...");
 
-console.log('Seeding start...')
+  await mongoose.connect(process.env.MONGODB_URI);
 
-await mongoose.connect(process.env.MONGODB_URI)
+  console.log("Connection successful...");
 
-console.log('Connection successful...');
+  // ! Clear database
+  await mongoose.connection.db.dropDatabase();
 
-// ! Clear database
-await mongoose.connection.db.dropDatabase()
+  const testSeed = await Mushroom.create(mushroomData);
 
-const testSeed = await Mushroom.create(mushroomData)
+  console.log(testSeed);
 
-console.log(testSeed);
-
-mongoose.disconnect()
-
+  mongoose.disconnect();
 }
 
-seed()
+seed();

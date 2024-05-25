@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main">
+        <%- include('./partials/nav') %>
+        <h1>MycoProject</h1>
+        <div class="index-grid">
+            <% mushroom.forEach(mushroom=> { %>
+                <div>
+                    <img src="<%=mushroom.image%>" alt="Close-up image of <%=mushroom.commonName%>">
+                    <a href="/mushrooms/<%= mushroom._id %>">
+                        <%= mushroom.commonName %>
+                    </a>
+                    <% if(!mushroom.isEdible) { %>
+                        <span>☠</span>
+                        <% } %>
+                </div>
+
+                <% }) %>
+        </div>
+
+    </div>
+</body>
+
+</html>
