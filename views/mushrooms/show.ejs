@@ -5,11 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/style.css" />
-  <title>Document</title>
+  <title>MycoProject | <%=  foundMushroom.commonName %></title>
 </head>
 
 <body>
-  <div class="main">
+  <div class="main-container">
     <%- include('../partials/nav') %>
 
       <h1>
@@ -18,9 +18,9 @@
       <p>
         (<%= foundMushroom.scientificName %>)
       </p>
-      <div class="img-div">
+      <div class="show">
         <% if ( foundMushroom.image !=="" ) { %>
-          <img src="<%=foundMushroom.image %>" alt="<%= foundMushroom.commonName%> close-up">
+          <img class="img-show" src="<%=foundMushroom.image %>" alt="<%= foundMushroom.commonName%> close-up">
           <% } else { %>
             <em style="color: rgb(34, 98, 59)">No image currently available.</em>
             <br>

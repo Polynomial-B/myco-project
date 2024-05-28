@@ -5,28 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Document</title>
+    <title>MycoProject | Home</title>
 </head>
 
 <body>
-    <div class="main">
+    <div class="main-container">
         <%- include('./partials/nav') %>
         <h1>MycoProject</h1>
-        <div class="index-grid">
+        <div class="img-grid">
             <% mushroom.forEach(mushroom=> { %>
-                <div>
-                    <img src="<%=mushroom.image%>" alt="Close-up image of <%=mushroom.commonName%>">
+                <div class="img-div">
+                    <img class="img-home" src="<%=mushroom.image%>" alt="Close-up image of <%=mushroom.commonName%>">
+                    <div class="description-home">
                     <a href="/mushrooms/<%= mushroom._id %>">
                         <%= mushroom.commonName %>
                     </a>
                     <% if(!mushroom.isEdible) { %>
-                        <span>☠</span>
+                        <span id="toxic-symbol">☠</span>
                         <% } %>
+                    </div>
                 </div>
 
                 <% }) %>
         </div>
 
+        <%- include('./partials/footer') %>
     </div>
 </body>
 

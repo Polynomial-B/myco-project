@@ -1,0 +1,135 @@
+
+:root {
+    --background: #4eb17d;
+    --border: 1px solid #284636;
+}
+
+body {
+    background-color: var(--background);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em 0;
+    background-color: var(--background);
+    padding: 1em;
+    box-shadow: 5px 7.5px rgba(13, 13, 13, 0.5);
+    border: var(--border);
+    border-radius: 10px;
+    max-width: 90vw;
+    flex-grow: 1;
+}
+
+h1 {
+    flex-direction: row;
+    color: #B14E82;
+    align-self: center;
+    width: inherit;
+
+}
+
+.img-grid {
+    display: flex;
+    flex-flow: row wrap;
+    flex-basis: 200px;
+    justify-content: space-around;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.img-div {
+    outline: var(--border);
+    border-radius: 10px;
+    margin: 5px;
+    flex-direction: row;
+    flex-basis: 300px;
+    flex-shrink: 1;
+    z-index: 2;
+    flex-grow: 1;
+}
+
+.img-home {
+    max-width: 100%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    flex-basis: 300px;
+    flex-shrink: 1;
+    flex-grow: 1;
+    flex: 1;
+}
+
+.show {
+    border: var(--border);
+    border-radius: 10px;
+    margin: 5px;
+    flex-direction: row;
+    flex-shrink: 1;
+    z-index: 2;
+    flex-grow: 1;
+}
+
+.img-show {
+    max-width: 100%;
+    border-radius: 7px;
+    flex-basis: 800px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex: 1;
+}
+
+.description-home {
+    display: flex;
+    height: 2rem;
+}
+
+#toxic-symbol {
+    display: flex;
+    color: red;
+    justify-self: flex-end;
+
+}
+
+nav#nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0.5em 0;
+    height: 2em;
+    width: inherit;
+    justify-content: space-around;
+}
+
+a#nav-links {
+    color: rgb(24, 38, 18);
+    letter-spacing: 1.2px;
+    width: 5rem;
+
+}
+
+a#nav-links:hover {
+    color:rgb(138, 39, 183);
+    font-weight: 500;
+}
+
+
+
+
+a {
+    color: rgb(24, 38, 18);
+}
+
+a:hover {
+    color:rgb(138, 39, 183);
+    font-weight: 500;
+}
+
+#footer {
+    display: flex;
+    flex-direction: row;
+    margin: 1.5em 0 0;
+    /* flex: 0 0 100%; */
+    height: 2em;
+    width: inherit;
+}
