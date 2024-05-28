@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Login Page</title>
+    <title>MycoProject | Login Page</title>
 </head>
 
 <body>
-    <div class="main">
+    <div class="main-container">
         <div><%- include('../partials/nav.ejs') %></div>
-        <h1>Login</h1>
+        <h1 class="h1-auth">Login</h1>
         <form action="/auth/sign-in" method="POST">
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" />

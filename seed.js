@@ -3,8 +3,16 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const Mushroom = require("./models/mushroom.js");
+const User = require("./models/user.js")
 
 const mushroomData = require("./seedData.js");
+
+const adminData = {
+  username: 'admin',
+  password: 'admin',
+  confirmPassword: 'admin',
+  isAdmin: true
+}
 
 async function seed() {
   console.log("Seeding start...");
@@ -16,7 +24,9 @@ async function seed() {
   // ! Clear database
   await mongoose.connection.db.dropDatabase();
 
-  const testSeed = await Mushroom.create(mushroomData);
+  const admin = await User.create(adminData);
+  const mushroomsWithAdmin = mushroomData.map(mushroom => ({ ...mushroom, createdBy: admin._id }));
+  const testSeed = await Mushroom.create(mushroomsWithAdmin);
 
   console.log(testSeed);
 

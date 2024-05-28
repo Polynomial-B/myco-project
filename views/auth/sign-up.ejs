@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Register As User</title>
+    <title>MycoProject | Register</title>
 </head>
 
 <body>
-    <div class="main">
+    <div class="main-container">
         <div><%- include('../partials/nav.ejs') %></div>
-        <h1>Register</h1>
-        <h2>Create a new account:</h2>
+        <h1 class="h1-auth">Register</h1>
+        <h2 class="h2-auth">Create a new account:</h2>
+        <div><%= error %></div>
         <form action="/auth/sign-up" method="POST">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" />
@@ -22,7 +23,7 @@
         <br>
         <label for="confirmPassword">Confirm Password:</label>
         <input type="password" name="confirmPassword" id="confirmPassword" />
-
+        <br>
         <button type="submit">Sign-up</button>
         </form>
     </div>

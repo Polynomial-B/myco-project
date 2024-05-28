@@ -8,13 +8,11 @@ const session = require("express-session");
 const path = require("path");
 
 const Mushroom = require("./models/mushroom.js");
-const User = require("./models/user.js");
 
-const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 
 const authRouter = require("./controllers/auth.js");
-const mushroomsRouter = require("./controllers/mushrooms.js");
+const mushroomRouter = require("./controllers/mushrooms.js");
 
 const port = process.env.PORT || 3000;
 
@@ -24,6 +22,7 @@ mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
+app.use(express.json());
 
 app.use(methodOverride("_method"));
 
@@ -39,15 +38,10 @@ app.use(
     cookie: { secure: false }
   })
 );
-
+ 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(function (req, res, next) {
-  res.locals.user = req.session.user;
-  next();
-});
-
-
+app.use(passUserToView);
 
 app.get("/", async (req, res) => {
   try {
@@ -60,26 +54,8 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.get("/mushrooms/:id", async (req, res) => {
-  try {
-    const mushroomId = req.params.id;
-    const foundMushroom = await Mushroom.findById(mushroomId);
-    res.render("mushrooms/show.ejs", {
-      foundMushroom
-    });
-  } catch (error) {
-    res.render("error.ejs", {
-      error: error.message
-    });
-  }
-});
-
-
-// app.use(passUserToView)
-// app.use('/auth', authRouter)
-// app.use(isSignedIn)
-// app.use('/users/:userId/mushrooms', mushroomsRouter)
-
+app.use('/auth', authRouter);
+app.use('/mushrooms', mushroomRouter);
 
 
 app.get("*", function (req, res) {
@@ -89,3 +65,6 @@ app.get("*", function (req, res) {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+
+
