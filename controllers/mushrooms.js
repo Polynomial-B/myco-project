@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Mushroom = require("../models/mushroom.js");
+const methodOverride = require("method-override");
+const User = require("../models/user.js");
 
 // ? All controllers /mushrooms
 
@@ -40,6 +42,68 @@ router.post("/", async (req, res) => {
     res.redirect("/auth/sign-in")
   }
 } );
+
+router.delete("/:id", async (req, res) => {
+    const createdById = await Mushroom.findById(req.params.id)
+  if(req.session.user) {
+    if (req.session.user.username === "admin" || createdById.createdBy.equals(req.session.user._id)) {
+      try {
+        const deleteId = req.params.id;
+        await Mushroom.findByIdAndDelete(deleteId);
+        res.redirect("/");
+      } catch (error) {
+        res.send(error.message)
+      }
+    } else {
+      res.render("error.ejs", {
+        error: 'You do not have permission to delete this page.'
+      });
+    };
+  } else {
+    res.redirect("/")
+  };
+});
+ 
+
+router.get("/:id/edit", async (req, res) => {
+  if (req.session.user) {
+    if (req.session.user.username === "admin" || createdById.createdBy.equals(req.session.user._id)) {
+      try {
+          const foundMushroom = await Mushroom.findById(req.params.id);
+          res.render("mushrooms/edit.ejs", {
+              mushroom: foundMushroom,
+          });
+      } catch (error) {
+          res.render("error.ejs", {
+              error,
+          });
+      }}
+  } else {
+    res.render("error.ejs", {
+      error: 'You do not have permission to delete this page.'
+  })
+}
+});
+ 
+router.put("/:id", async (req, res) => {
+  if (req.session.user) {
+    try {
+        const updatedMushroom = await Mushroom.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true } // Postman
+      );
+      res.redirect(`${req.params.id}`);
+    } catch (error) {
+      res.render("error.ejs", {
+        error,
+      });
+    }
+  } else {
+    res.redirect("auth/sign-in");
+  }
+});
+
 
 
 

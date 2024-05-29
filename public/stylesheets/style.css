@@ -5,8 +5,12 @@
 }
 
 body {
+    height: 100%;
     background-color: var(--background);
     font-family:Georgia, 'Times New Roman', Times, serif;
+    align-items: flex-start;
+    justify-content: center;
+
 }
 
 .main-container {
@@ -37,6 +41,7 @@ h1 {
     justify-content: space-around;
     flex-grow: 1;
     flex-shrink: 1;
+    gap: 20px;
 }
 
 .img-div {
@@ -48,6 +53,7 @@ h1 {
     flex-shrink: 1;
     z-index: 2;
     flex-grow: 1;
+    max-width: 500px;
 }
 
 .img-home {
@@ -61,6 +67,7 @@ h1 {
 }
 
 .show {
+    max-width: 800px;
     border: var(--border);
     border-radius: 10px;
     margin: 5px;
@@ -70,18 +77,28 @@ h1 {
     flex-grow: 1;
 }
 
+.show-header {
+    display: flex;
+}
+
 .img-show {
     max-width: 100%;
     border-radius: 7px;
-    flex-basis: 800px;
+    flex-basis: 600px;
     flex-shrink: 1;
-    flex-grow: 0;
+    flex-grow: 1;
     flex: 1;
+    height: auto;
+    display: block;
 }
 
 .description-home {
     display: flex;
     height: 2rem;
+}
+
+.description-home a {
+    text-decoration: none;
 }
 
 #toxic-symbol {
@@ -137,6 +154,22 @@ form {
     justify-content: flex-start;
 }
 
+#delete {
+    flex-direction: row;
+    height: 2em;
+    width: auto;
+}
+
+#delete-button {
+    border-radius: 10px;
+    background-color: var(--background);
+}
+
+#delete-button:hover {
+    background-color: #180d1398;
+    color: rgb(146, 146, 146);
+}
+
 input:invalid {
     border: 1px solid rgb(255, 0, 0);
 }
@@ -145,3 +178,5 @@ input:invalid {
     display: flex;
     justify-content: center;
 }
+
+

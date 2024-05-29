@@ -54,7 +54,12 @@ const mushroomSpore = [
     isEdible: true,
     image: "https://www.wildfooduk.com/wp-content/uploads/2018/04/Semi-3-1.jpg",
   },
-  
+  {
+    commonName: "Liberty Cap",
+    scientificName: "Psilocybe semilanceata",
+    isEdible: false,
+    image: "https://www.wildfooduk.com/wp-content/uploads/2021/11/Magics-8.jpg",
+  }
 ];
 
 module.exports = mushroomSpore;

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/post.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="main-container">
+    <%- include('../partials/nav') %>
+      <h1><%=mushroom.commonName%></h1>
+      <!-- ? action is the route this form talks to-->
+      <div class="form-div">
+        <form action="/mushrooms/<%=mushroom._id%>?_method=PUT" method="POST">
+          <label for="commonName">Common Name:</label>
+          <input type="text" name="commonName" id="commonName" value="<%=mushroom.commonName%>" required>
+          <label for="scientificName">Scientific Name Name:</label>
+          <input type="text" name="scientificName" id="scientificName" value="<%=mushroom.scientificName%>" required>
+          <label for="isEdible">Is it edible?:</label>
+          <label for="isEdibleTrue">Yes
+            
+          <input type="radio" name="isEdible" id="isEdibleTrue" value="true" <%= mushroom.isEdible ? 'checked' : '' %>>
+          </label>
+          
+          <label for="isEdibleFalse">No
+            
+            <input type="radio" name="isEdible" id="isEdibleFalse" value="false" <%= !mushroom.isEdible ? 'checked' : '' %>>
+          </label>
+          <label for="image">Image URL:</label>
+          <input type="url" name="image" id="image" value="<%=mushroom.image%>">
+          <% if (typeof errorMessage !== 'undefined') { %>
+            <p style="color: rgb(145, 0, 0)"><%= errorMessage %></p>
+          <% } %>
+          <button class="submit-button" type="submit">Update</button>
+      </div>
+      </form>
+</body>
+
+</html>

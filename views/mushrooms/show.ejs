@@ -11,9 +11,12 @@
 <body>
   <div class="main-container">
     <%- include('../partials/nav') %>
-
-      <h1>
-        <%= foundMushroom.commonName %></a>
+      <h1 class="show-header">
+        <% if(!foundMushroom.isEdible) { %>
+        <%= foundMushroom.commonName %> <span id="toxic-symbol">☠</span> %>
+        <% } else { %>
+        <%= foundMushroom.commonName %>
+        <% } %>
       </h1>
       <p>
         (<%= foundMushroom.scientificName %>)
@@ -32,10 +35,9 @@
 
       
       <% if (user) { %>
-        <a href="/mushrooms/<%=foundMushroom.commonName%>/edit">Edit</a>
-        <a href="/mushrooms/<%=foundMushroom.commonName%>/reviews">Reviews</a>
-      <form id="delete" action="/mushrooms/<%=foundMushroom.commonName%>?_method=DELETE" method="POST">
-        <button type="submit">Delete <%=foundMushroom.commonName%></button></form>
+        <a href="/mushrooms/<%=foundMushroom._id%>/edit">Edit</a>
+      <form id="delete" action="/mushrooms/<%=foundMushroom._id%>?_method=DELETE" method="POST">
+        <button id="delete-button" type="submit">Delete <%=foundMushroom.commonName%></button></form>
       <% } %>
 
   </div>

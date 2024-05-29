@@ -6,8 +6,8 @@ const mushroomSchema = new mongoose.Schema(
         scientificName: { type: String, required: true, unique: true, trim: true },
         isEdible: { type: Boolean, required: false, unique: false, default: false },
         image: { type: String, required: false, unique: false, trim: true },
-        createdBy: { type: mongoose.Schema.ObjectId, ref: "User" }
+        createdBy: { type: mongoose.Schema.ObjectId, ref: "User", required: true }
     }
 )
 
-module.exports = mongoose.model('Mushroom', mushroomSchema)
+module.exports = mongoose.model('Mushroom', mushroomSchema);
