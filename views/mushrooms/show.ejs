@@ -5,22 +5,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/style.css" />
-  <title>MycoProject | <%=  foundMushroom.commonName %></title>
+  <title>MycoProject | <%= foundMushroom.commonName %>
+  </title>
 </head>
 
 <body>
-  <div class="main-container">
+  <div class="main-container" id="<%=foundMushroom.scientificName.includes("Psilocybe") ? "special-id" : "" %>">
     <%- include('../partials/nav') %>
       <h1 class="show-header">
         <% if(!foundMushroom.isEdible) { %>
-        <%= foundMushroom.commonName %> <span id="toxic-symbol">☠</span> %>
-        <% } else { %>
-        <%= foundMushroom.commonName %>
-        <% } %>
+          <div id="toxic-symbol-show"><img src="../assets/skull-bones_8078718.png"> </div>
+          <%= foundMushroom.commonName %>
+            <div id="toxic-symbol-show"><img src="../assets/skull-bones_8078718.png"></div> %>
+            <% } else { %>
+              <%= foundMushroom.commonName %>
+                <% } %>
       </h1>
-      <p>
+      <h2>
         (<%= foundMushroom.scientificName %>)
-      </p>
+      </h2>
       <div class="show">
         <% if ( foundMushroom.image !=="" ) { %>
           <img class="img-show" src="<%=foundMushroom.image %>" alt="<%= foundMushroom.commonName%> close-up">
@@ -33,12 +36,15 @@
       </div>
 
 
-      
+
       <% if (user) { %>
-        <a href="/mushrooms/<%=foundMushroom._id%>/edit">Edit</a>
-      <form id="delete" action="/mushrooms/<%=foundMushroom._id%>?_method=DELETE" method="POST">
-        <button id="delete-button" type="submit">Delete <%=foundMushroom.commonName%></button></form>
-      <% } %>
+        <div class="show-edit">
+          <a class="edit-anchor" href="/mushrooms/<%=foundMushroom._id%>/edit">Edit</a>
+          <form id="delete" action="/mushrooms/<%=foundMushroom._id%>?_method=DELETE" method="POST">
+            <button id="delete-button" type="submit">Delete <%=foundMushroom.commonName%></button>
+          </form>
+        </div>
+        <% } %>
 
   </div>
 </body>

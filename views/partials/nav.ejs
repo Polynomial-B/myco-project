@@ -1,11 +1,10 @@
 <nav id="nav">
-    <a id="nav-links" href="/">Home</a>
-    <% if(user) { %>
-      <a id="nav-links" href="/mushrooms"><%=user.username%>'s Mushrooms</a>
-      <a id="nav-links" href="/mushrooms/new">Add Mushroom</a>
-      <a id="nav-links" href="/auth/sign-out">Sign Out</a>
+  <a id="nav-links" href="/">Home</a>
+  <% if(user) { %>
+    <a id="nav-links" href="/mushrooms/new">Add Mushroom</a>
+    <a id="nav-links" href="/auth/sign-out">Sign Out <%=user.username%></a>
     <% } else { %>
       <a id="nav-links" href="/auth/sign-in">Sign In</a>
       <a id="nav-links" href="/auth/sign-up">Sign Up</a>
-    <% } %>
-  </nav>
+      <% } %>
+</nav>

@@ -14,8 +14,10 @@ router.get("/:id", async (req, res) => {
   try {
     const mushroomId = req.params.id;
     const foundMushroom = await Mushroom.findById(mushroomId);
+    const createdById = await Mushroom.findById(req.params.id)
     res.render("mushrooms/show.ejs", {
       foundMushroom,
+      createdById
     });
   } catch (error) {
     res.render("error.ejs", {
@@ -67,6 +69,7 @@ router.delete("/:id", async (req, res) => {
 
 router.get("/:id/edit", async (req, res) => {
   if (req.session.user) {
+    const createdById = await Mushroom.findById(req.params.id)
     if (req.session.user.username === "admin" || createdById.createdBy.equals(req.session.user._id)) {
       try {
           const foundMushroom = await Mushroom.findById(req.params.id);
@@ -84,23 +87,25 @@ router.get("/:id/edit", async (req, res) => {
   })
 }
 });
- 
+
 router.put("/:id", async (req, res) => {
   if (req.session.user) {
+    if (req.session.user.username === "admin" || createdById.createdBy.equals(req.session.user._id)) {
     try {
         const updatedMushroom = await Mushroom.findByIdAndUpdate(
         req.params.id,
         req.body,
-        { new: true } // Postman
       );
       res.redirect(`${req.params.id}`);
     } catch (error) {
       res.render("error.ejs", {
         error,
       });
-    }
+    }}
   } else {
-    res.redirect("auth/sign-in");
+    res.render("error.ejs", {
+      error: 'You do not have permission to edit this page.'
+  })
   }
 });
 

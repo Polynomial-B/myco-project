@@ -5,32 +5,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/style.css" />
-  <link rel="stylesheet" href="/stylesheets/post.css" />
-  <title>Document</title>
+  <title>Add Mushroom</title>
 </head>
 
 <body>
-  <div class="post-container">
+  <div class="main-container">
     <%- include('../partials/nav') %>
-      <h1>Post</h1>
+      <h1>Add Mushroom</h1>
 
       <div class="form-div">
+        <br>
         <form action="/mushrooms" method="POST">
           <label for="commonName">Common Name:</label>
           <input type="text" name="commonName" id="commonName" required>
           <label for="scientificName">Latin Name:</label>
           <input type="text" name="scientificName" id="scientificName" required>
           <label for="isEdible">Is it edible?:</label>
-          <input type="checkbox" name="isEdible" id="isEdible">
+          <label for="isEdibleTrue">Yes
+
+            <input type="radio" name="isEdible" id="isEdibleTrue" value="true">
+          </label>
+
+          <label for="isEdibleFalse">No
+
+            <input type="radio" name="isEdible" id="isEdibleFalse" value="false">
+          </label>
           <label for="image">Image URL:</label>
           <input type="url" name="image" id="image">
-          <% if (typeof errorMessage !== 'undefined') { %>
-            <p style="color: rgb(145, 0, 0)"><%= errorMessage %></p>
-          <% } %>
-          <button class="submit-button" type="submit">Submit</button>
+          <% if (typeof errorMessage !=='undefined' ) { %>
+            <p style="color: rgb(145, 0, 0)">
+              <%= errorMessage %>
+            </p>
+            <% } %>
+              <br>
+              <button class="submit-button" type="submit">Submit</button>
       </div>
       </form>
-      
+
 </body>
 
 </html>
