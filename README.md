@@ -17,9 +17,11 @@ I spent quite a lot of time on the visal side of the app as I wanted it to draw 
 
 ## Software / Dependencies
 
+EJS
 Javascript
 HTML
 CSS
+
 
 Middleware: for database and cryptography, "node", "express", "express-session", "dotenv", "ejs", "method-override", "morgan"
 
@@ -103,11 +105,11 @@ Thank you for reading and taking a look!
 
 ```
             ___
-          /     \
-         / O  O  \
-        {  ----'  }
-          /'| |'\
-            | | 
+   T       /     \
+   H      / O  O  \
+   A     {  ----'  }
+   N       /'| |'\
+   K         | | 
             | |
             / \
 / ////  / / / / /// / \ \

@@ -9,7 +9,7 @@ const path = require("path");
 
 const Mushroom = require("./models/mushroom.js");
 
-const passUserToView = require("./middleware/pass-user-to-view.js");
+
 
 const authRouter = require("./controllers/auth.js");
 const mushroomRouter = require("./controllers/mushrooms.js");
@@ -35,13 +35,16 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { secure: false },
   })
 );
- 
-app.use(express.static(path.join(__dirname, "public")));
 
-app.use(passUserToView);
+app.use(function (req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", async (req, res) => {
   try {
@@ -54,9 +57,8 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.use('/auth', authRouter);
-app.use('/mushrooms', mushroomRouter);
-
+app.use("/auth", authRouter);
+app.use("/mushrooms", mushroomRouter);
 
 app.get("*", function (req, res) {
   res.render("error.ejs", { error: "Go back, page not found!" });
@@ -65,6 +67,3 @@ app.get("*", function (req, res) {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
-
-

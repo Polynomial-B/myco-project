@@ -10,7 +10,7 @@ const path = require("path");
 
 const Mushroom = require("../../models/mushroom.js");
 
-const passUserToView = require("../../middleware/pass-user-to-view.js");
+
 
 const authRouter = require("../../controllers/auth.js");
 const mushroomRouter = require("../../controllers/mushrooms.js");
@@ -28,7 +28,7 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
 
 app.use(morgan("dev"));
-
+ 
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -38,9 +38,12 @@ app.use(
   })
 );
  
-app.use(express.static("public"));
+app.use(function (req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
 
-app.use(passUserToView);
+app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
   try {
@@ -61,4 +64,5 @@ app.get("*", function (req, res) {
   res.render("error.ejs", { error: "Go back, page not found!" });
 });
 
-module.exports.handler = serverless(app)
+module.exports.handler = serverless(app);
+
