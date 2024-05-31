@@ -14,9 +14,9 @@
     <%- include('../partials/nav') %>
       <h1 class="show-header">
         <% if(!foundMushroom.isEdible) { %>
-          <div id="toxic-symbol-show"><img src="../assets/skull-bones_8078718.png"> </div>
+          <div id="toxic-symbol-show"><img src="/assets/skull-bones_8078718.png"> </div>
           <%= foundMushroom.commonName %>
-            <div id="toxic-symbol-show"><img src="../assets/skull-bones_8078718.png"></div> %>
+            <div id="toxic-symbol-show"><img src="/assets/skull-bones_8078718.png"></div> %>
             <% } else { %>
               <%= foundMushroom.commonName %>
                 <% } %>
