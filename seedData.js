@@ -89,6 +89,12 @@ const mushroomSpore = [
     scientificName: "Xylaria polymorpha",
     isEdible: false,
     image: "https://www.wildfooduk.com/wp-content/uploads/2023/08/Dead-Mans-12.jpg",
+  },
+  {
+    commonName: "Plums and Custard",
+    scientificName: "Tricholomopsis rutilans",
+    isEdible: false,
+    image: "https://www.wildfooduk.com/wp-content/uploads/2017/06/Plums-a-Custard-1.jpg",
   }
 ];
 
