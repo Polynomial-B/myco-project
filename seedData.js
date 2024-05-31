@@ -59,6 +59,36 @@ const mushroomSpore = [
     scientificName: "Psilocybe semilanceata",
     isEdible: false,
     image: "https://www.wildfooduk.com/wp-content/uploads/2021/11/Magics-8.jpg",
+  },
+  {
+    commonName: "Destroying Angel",
+    scientificName: "Amanita virosa",
+    isEdible: false,
+    image: "https://www.wildfooduk.com/wp-content/uploads/2018/01/Destroying-4.jpg",
+  },
+  {
+    commonName: "Chanterelle",
+    scientificName: "Cantharellus cibarius",
+    isEdible: false,
+    image: "https://www.wildfooduk.com/wp-content/uploads/2018/01/Chant-3.jpg",
+  },
+  {
+    commonName: "Brown Mottlegill",
+    scientificName: "Psilocybe foenisecii",
+    isEdible: false,
+    image: "https://www.wildfooduk.com/wp-content/uploads/2023/07/Mowers-8.jpg",
+  },
+  {
+    commonName: "The Sickener",
+    scientificName: "Russula emetica",
+    isEdible: false,
+    image: "https://www.wildfooduk.com/wp-content/uploads/2018/01/Sickener-5.jpg",
+  },
+  {
+    commonName: "Dead Man’s Fingers",
+    scientificName: "Xylaria polymorpha",
+    isEdible: false,
+    image: "https://www.wildfooduk.com/wp-content/uploads/2023/08/Dead-Mans-12.jpg",
   }
 ];
 
