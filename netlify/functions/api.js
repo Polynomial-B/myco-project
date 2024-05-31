@@ -53,8 +53,8 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.use('../../auth', authRouter);
-app.use('../../mushrooms', mushroomRouter);
+app.use('/auth', authRouter);
+app.use('/mushrooms', mushroomRouter);
 
 
 app.get("*", function (req, res) {
