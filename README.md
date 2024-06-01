@@ -104,13 +104,13 @@ app.get("*", function (req, res) {
 Thank you for reading and taking a look!
 
 ```
-            ___
+             ___
    T       /     \
    H      / O  O  \
    A     {  ----'  }
    N       /'| |'\
    K         | | 
-            | |
+   S        | |
             / \
 / ////  / / / / /// / \ \
 ```
