@@ -90,6 +90,6 @@ authRouter.post('/sign-in', async (req, res) => {
     console.error(err.message)
     res.render('error.ejs', { error: err.message })
   }
-})
+});
 
 module.exports = authRouter;

@@ -9,8 +9,6 @@ const path = require("path");
 
 const Mushroom = require("./models/mushroom.js");
 
-
-
 const authRouter = require("./controllers/auth.js");
 const mushroomRouter = require("./controllers/mushrooms.js");
 

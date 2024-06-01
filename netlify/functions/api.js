@@ -7,15 +7,15 @@ const methodOverride = require("method-override");
 const morgan = require("morgan");
 const session = require("express-session");
 const path = require("path");
-
 const Mushroom = require("../../models/mushroom.js");
-
-
-
 const authRouter = require("../../controllers/auth.js");
 const mushroomRouter = require("../../controllers/mushrooms.js");
 
-mongoose.connect(process.env.MONGODB_URI);
+async function connectToDb() {
+  await mongoose.connect(process.env.MONGODB_URI);
+}
+
+connectToDb()
 
 mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
@@ -65,4 +65,3 @@ app.get("*", function (req, res) {
 });
 
 module.exports.handler = serverless(app);
-
