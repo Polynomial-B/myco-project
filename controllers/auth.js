@@ -57,9 +57,8 @@ authRouter.post("/sign-up", async (req, res) => {
       _id: newUser._id
     };
 
-    req.session.save(() => {
-      res.redirect("/");
-    });
+    res.redirect("/");
+
   } catch (error) {
     console.log(error);
     res.render("auth/sign-in.ejs", {
@@ -67,8 +66,6 @@ authRouter.post("/sign-up", async (req, res) => {
     });
   }
 });
-
-
 
 authRouter.post('/sign-in', async (req, res) => {
   try {
@@ -95,10 +92,4 @@ authRouter.post('/sign-in', async (req, res) => {
   }
 })
 
-
-
-
-
-
 module.exports = authRouter;
-

@@ -7,7 +7,7 @@ const User = require("../models/user.js");
 // ? All controllers /mushrooms
 
 router.get("/new", (req, res) => {
-  res.render("mushrooms/new.ejs")
+  res.render("mushrooms/new.ejs");
 })
 
 router.get("/:id", async (req, res) => {
@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
       console.log(error.message);
     }
   } else {
-    res.redirect("/auth/sign-in")
+    res.redirect("/auth/sign-in");
   }
 } );
 
@@ -54,7 +54,7 @@ router.delete("/:id", async (req, res) => {
         await Mushroom.findByIdAndDelete(deleteId);
         res.redirect("/");
       } catch (error) {
-        res.send(error.message)
+        res.send(error.message);
       }
     } else {
       res.render("error.ejs", {
@@ -84,7 +84,7 @@ router.get("/:id/edit", async (req, res) => {
   } else {
     res.render("error.ejs", {
       error: 'You do not have permission to delete this page.'
-  })
+  });
 }
 });
 
@@ -105,12 +105,8 @@ router.put("/:id", async (req, res) => {
   } else {
     res.render("error.ejs", {
       error: 'You do not have permission to edit this page.'
-  })
+  });
   }
 });
-
-
-
-
 
 module.exports = router;
