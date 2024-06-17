@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: url("/assets/mushroom-background.jpg");
+  background-image: url("https://i.imgur.com/xXNyQgr.jpeg");
   height: 100%;
   background-color: var(--background);
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -161,15 +161,19 @@ nav#nav {
   flex-wrap: wrap;
   margin: 0.5em 0;
   height: 2em;
-  width: 90vw;
+  width: 100%;
   overflow: hidden;
   justify-content: space-around;
-  align-self: center;
+  align-content: center;
+  overflow: hidden;
+  background-color: rgba(108, 4, 120, 0.568);
+  border-radius: 10px;
 }
 
 a#nav-links {
   color: var(--text-color);
   letter-spacing: 1.2px;
+  font-size: 1.3em;
 }
 
 a#nav-links:hover {
@@ -276,20 +280,5 @@ input:invalid {
 @keyframes animate {
   to {
     background-position: 0 80%;
-  }
-}
-
-@media (max-width: 500px) {
-  nav#nav {
-    display: flex;
-    flex-direction: column;
-    height: 12em;
-    align-items: center;
-    justify-content: center;
-  }
-  a#nav-links {
-    width: 99vw;
-    justify-self: center;
-    font-size: 2em;
   }
 }
