@@ -6,10 +6,10 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 const session = require("express-session");
-const path = require("path");
 const Mushroom = require("../../models/mushroom.js");
 const authRouter = require("../../controllers/auth.js");
 const mushroomRouter = require("../../controllers/mushrooms.js");
+const MongoStore = require('connect-mongo');
 
 async function connectToDb() {
   await mongoose.connect(process.env.MONGODB_URI);
@@ -34,7 +34,16 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    store: new MongoStore({
+      mongoUrl: process.env.MONGODB_URI,
+      ttl: 14 * 24 * 60 * 60, // 14 days expiration
+    }),
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      secure: false, // Set to true if using https
+      httpOnly: true,
+      sameSite: 'lax',
+    },
   })
 );
  
