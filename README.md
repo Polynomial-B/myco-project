@@ -2,6 +2,7 @@
 
 _Disclaimer: Please don't rely on the data in the page if you're considering eating the mushrooms. Certain mushrooms can be easily confused with deadly consequences._
 
+
 ## Inspiration
 
 I like nature and wanted to do something that reflected the parts of nature that I enjoy. Having built a smaller test CRUD app based on Bryophytes (Mosses, Liverworts and Hornworts) I thought that creating an app for mushrooms would be a nice complement.
@@ -64,6 +65,12 @@ Original plan/whiteboarding
 The planning stages
 
 ![](./README-assets/screenshot1.png)
+
+
+## IMPORTANT: Avoid using Format Document on the show.ejs page
+
+An error occurs when using 'format document' in the show.ejs page. This error adds a space at line 13 column 77 which breaks the "special-id" class assignment. This may be a VS Code or extension bug but isn't something that I've looked into with much success.
+
 
 ## Future Updates
 
@@ -155,7 +162,7 @@ Thank you for reading and taking a look!
    A     {  ----'  }
    N       /'| |'\
    K         | |
-   S        | |
-            / \
+   S         | |
+             / \
 / ////  / / / / /// / \ \
 ```
