@@ -1,6 +1,6 @@
 # MYCO-PROJECT
 
-_Disclaimer: Please don't rely on the data on this website if you're considering eating any of the featured mushrooms!
+Disclaimer: Please don't rely on the data on this website if you're considering eating any of the featured mushrooms!
 ## Inspiration
 
 I built a test CRUD app for [Bryophytes](https://github.com/Polynomial-B/bryophytes-lab) and I wanted to create something similarly nature-aligned. Although I have no knowledge of mushrooms, I thought this would be an interesting project to undertake.
