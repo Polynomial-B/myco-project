@@ -1,19 +1,17 @@
 # MYCO-PROJECT
 
-_Disclaimer: Please don't rely on the data in the page if you're considering eating the mushrooms. Certain mushrooms can be easily confused with deadly consequences._
-
-
+_Disclaimer: Please don't rely on the data on this website if you're considering eating any of the featured mushrooms!
 ## Inspiration
 
-I like nature and wanted to do something that reflected the parts of nature that I enjoy. Having built a smaller test CRUD app based on Bryophytes (Mosses, Liverworts and Hornworts) I thought that creating an app for mushrooms would be a nice complement.
+I built a test CRUD app for [Bryophytes](https://github.com/Polynomial-B/bryophytes-lab) and I wanted to create something similarly nature-aligned. Although I have no knowledge of mushrooms, I thought this would be an interesting project to undertake.
 
 ## Overview
 
-This is a simple CRUD database relating to mushrooms. You can upload, edit and delete your own mushrooms and you can view those made by others. You do not have permissions to delete other people's mushrooms unless you are signed in higher level permissions.
+This is a CRUD database relating to mushrooms. You can upload, edit and delete your own mushrooms and you can view those made by others. You do not have permissions to delete other people's mushrooms unless you are signed in with administrator permissions.
 
-I enjoyed creating the project and it was my first attempt at making a CRUD app that implemented using different routers, rather than having everything on one server.js page.
+I enjoyed creating the project and it was my first attempt at making a CRUD app that implemented using different routers.
 
-I spent quite a lot of time on the visal side of the app as I wanted it to draw more attention than just being a standard CRUD database. There's a not-so-hidden easter egg feature that can be viewed if you look at some of the code or navigate to some of the pages. See if you can find it! 🍄
+There's an easter egg that can be seen if you navigate to some of the pages. 🍄
 
 ## Screenshots
 
@@ -41,12 +39,15 @@ This is where a new entry can be added:
 
 ## Software / Dependencies
 
-EJS
-Javascript
-HTML
-CSS
-
-Middleware: for database and cryptography, "node", "express", "express-session", "dotenv", "ejs", "method-override", "morgan"
+- EJS
+- Javascript
+- HTML
+- CSS
+- Bcrypt
+- MongoDB
+- Mongoose
+- Node.js
+- Dotenv
 
 ## Accreditations
 
@@ -66,12 +67,6 @@ The planning stages
 
 ![](./README-assets/screenshot1.png)
 
-
-## IMPORTANT: Avoid using Format Document on the show.ejs page
-
-An error occurs when using 'format document' in the show.ejs page. This error adds a space at line 13 column 77 which breaks the "special-id" class assignment. This may be a VS Code or extension bug but isn't something that I've looked into with much success.
-
-
 ## Future Updates
 
 - Each mushroom card on the homepage should be a hyperlink wherever it is clicked, currently the hyperlink is only on the mushroom's name. This would help improve UX, especially for smaller device use.
@@ -88,9 +83,7 @@ An error occurs when using 'format document' in the show.ejs page. This error ad
     - preferred biomes and climates
     - tasting notes
 
-- Error handling improvements - check for duplicate mushroom.
-
-- Stylistically I included a hazard sign (see assets/skull-bones...) that may not have practical application for a publically available app as it isn't that clear it signifies a 'hazard'.
+- Stylistically I included a hazard sign (see assets/skull-bones...) that may not have practical application for a publicly available app as it isn't that clear it signifies a 'hazard'.
 
 - The ability to add multiple mushroom images should be a key feature to 'identification' side of the app. If you are mushroom spotting/picking then you need to be aware of different visual aspects of the mushroom, sometimes including the colour once bruised or inside the stipe (stem) or other parts of the mushroom. Unfortunately this was out of scope for this project.
 
@@ -153,16 +146,6 @@ Some of the code that renders each mushroom page:
       </div>
 ```
 
-Thank you for reading and taking a look!
+## Bugs
 
-```
-             ___
-   T       /     \
-   H      / O  O  \
-   A     {  ----'  }
-   N       /'| |'\
-   K         | |
-   S         | |
-             / \
-/ ////  / / / / /// / \ \
-```
+You can add multiple mushrooms of the same name. There should be a logic check for already existing mushrooms before attempting to save to the database.
